@@ -1,0 +1,27 @@
+#include"Ellipse.h"
+
+Ellipse::Ellipse(void)
+{
+}
+
+Ellipse::Ellipse(int start_point_x, int start_point_y, int end_point_x, int end_point_y,QColor color,int width ,Qt::PenStyle style)
+{
+	start_point_x_ = start_point_x;
+	start_point_y_ = start_point_y;
+	end_point_x_ = end_point_x;
+	end_point_y_ = end_point_y;
+	mycolor = color;
+	mywidth = width;
+	mystyle = style;
+}
+
+Ellipse::~Ellipse(void)
+{
+}
+
+void Ellipse::Draw(QPainter& paint)
+{
+	paint.setRenderHint(QPainter::Antialiasing, true);
+	paint.setPen(QPen(mycolor, mywidth, mystyle));
+	paint.drawEllipse(start_point_x_, start_point_y_, end_point_x_ - start_point_x_, end_point_y_ - start_point_y_);
+}
